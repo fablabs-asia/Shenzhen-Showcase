@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FabAcademy Project Showcase</title>
+  <style>
+    /* Fade-in animation */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .visible { opacity: 1; transform: translateY(0); }
+
+    /* Back-to-top button */
+    #backToTop {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #007aff;
+      color: white;
+      padding: 12px 16px;
+      border-radius: 50px;
+      font-size: 14px;
+      cursor: pointer;
+      display: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #ffffff;
+      color: #222;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px 0;
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      margin-bottom: 5px;
+    }
+
+    header p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .project-card {
+      background: #fff;
+      border-radius: 15px;
+      padding: 18px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease;
+    }
+
+    .project-card:hover { transform: translateY(-3px); }
+
+    .project-title { font-size: 1.2rem; margin-bottom: 8px; font-weight: bold; color: #111; }
+    .project-author { font-size: 0.9rem; color: #666; margin-bottom: 8px; }
+
+    .project-description { font-size: 0.95rem; margin-bottom: 12px; color: #444; line-height: 1.4; }
+
+    .project-card img { width: 100%; border-radius: 12px; margin-bottom: 12px; cursor: pointer; }
+
+    .btn-group a { display: inline-block; padding: 10px 14px; margin-right: 8px; text-decoration: none; background: #007aff; color: #fff; border-radius: 8px; font-size: 0.9rem; }
+    .btn-group a:hover { background: #005bbb; }
+
+    footer { text-align: center; margin-top: 40px; padding-bottom: 20px; font-size: 0.9rem; color: #888; }
+
+    /* Lightbox styles */
+    #lightboxOverlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.85); display: none; align-items: center; justify-content: center; z-index: 9999; }
+    #lightboxOverlay img { max-width: 90%; max-height: 90%; border-radius: 12px; }
+
+    @media(min-width:900px){ .container{max-width:900px;} .project-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px;} .project-card{margin-bottom:0;} }
+    
+
+    /* Language toggle styles */
+    .lang-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; }
+    .lang-toggle input { display:none; }
+    .slider { width:46px; height:22px; background:#ccc; border-radius:22px; position:relative; transition:0.3s; }
+    .slider:before { content:""; position:absolute; width:18px; height:18px; background:#fff; border-radius:50%; top:2px; left:2px; transition:0.3s; }
+    input:checked + .slider { background:#007aff; }
+    input:checked + .slider:before { transform:translateX(24px); }
+    .label-en, .label-zh { font-size:12px; }
+    input:checked ~ .label-en { opacity:0.4; }
+    input:not(:checked) ~ .label-zh { opacity:0.4; }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div style="position:absolute; top:15px; right:20px;">
+        <label class="lang-toggle">
+  <span class="label-en">EN</span>
+  <input type="checkbox" id="langToggle">
+  <span class="slider"></span>
+  <span class="label-zh">中文</span>
+</label>
+      </div>
+      <h1 id="siteTitle">Super Fab Lab Kerala</h1>
+      <p id="siteSubtitle">FabAcademy Project Showcase – Shenzhen Maker Faire</p>
+    </header>
+
+    <div class="project-grid">
+      <!-- GLOWSENSE -->
+      <div class="project-card fade-in">
+        <img src="https://fabacademy.org/2025/labs/kochi/students/ancy-roshan/presentation.png" alt="GLOWSENSE slide">
+        <div class="project-title">GLOWSENSE</div>
+        <div class="project-author">Author: Ancy Roshan</div>
+        <div class="project-description">GLOWSENSE is an interactive flower-lamp that reacts to human presence. It “blooms” when someone approaches and glows in different colours. The mechanism combines proximity sensing, mechanical actuation, and custom lighting design.</div>
+        <div class="btn-group">
+          <a href="https://fabacademy.org/2025/labs/kochi/students/ancy-roshan/presentation.png" target="_blank">Slides</a>
+          <a href="https://fabacademy.org/2025/labs/kochi/students/ancy-roshan/presentation.mp4" target="_blank">Video</a>
+          <a href="https://fabacademy.org/2025/labs/kochi/students/ancy-roshan/" target="_blank">FabAcademy Page</a>
+        </div>
+      </div>
+
+      <!-- MINUTES -->
+      <div class="project-card fade-in">
+        <img src="https://fabacademy.org/2025/labs/kochi/students/abin-mathew/presentation.png" alt="MINUTES slide">
+        <div class="project-title">MINUTES</div>
+        <div class="project-author">Author: Abin Mathew</div>
+        <div class="project-description">MINUTES is a Pomodoro productivity timer designed to help users stay focused. Built with custom electronics and fabrication, it visually guides work–break cycles to improve daily efficiency.</div>
+        <div class="btn-group">
+          <a href="https://fabacademy.org/2025/labs/kochi/students/abin-mathew/presentation.png" target="_blank">Slides</a>
+          <a href="https://fabacademy.org/2025/labs/kochi/students/abin-mathew/presentation.mp4" target="_blank">Video</a>
+          <a href="https://fabacademy.org/2025/labs/kochi/students/abin-mathew/" target="_blank">FabAcademy Page</a>
+        </div>
+      </div>
+
+      <!-- CHIP-E -->
+      <div class="project-card fade-in">
+        <img src="https://fabacademy.org/2025/labs/kochi/students/revisankar-s/presentation.png" alt="CHIP-E slide">
+        <div class="project-title">CHIP-E</div>
+        <div class="project-author">Author: Revisankar S</div>
+        <div class="project-description">CHIP-E is a friendly educational robot designed for kids. It helps young learners explore robotics through movement, interactive behaviours, and playful engagement.</div>
+        <div class="btn-group">
+          <a href="https://fabacademy.org/2025/labs/kochi/students/revisankar-s/presentation.png" target="_blank">Slides</a>
+          <a href="https://fabacademy.org/2025/labs/kochi/students/revisankar-s/presentation.mp4" target="_blank">Video</a>
+          <a href="https://fabacademy.org/2025/labs/kochi/students/revisankar-s/" target="_blank">FabAcademy Page</a>
+        </div>
+      </div>
+
+      <!-- MogAPad -->
+      <div class="project-card fade-in">
+        <img src="https://fabacademy.org/2025/labs/kochi/students/namita-aravind/presentation.png" alt="MogAPad slide">
+        <div class="project-title">MogAPad</div>
+        <div class="project-author">Author: Namita Aravind</div>
+        <div class="project-description">MogAPad is a multi-game electronic pad capable of running Tic-Tac-Toe, Minesweeper, and more. It blends playful design with embedded systems to create an engaging handheld gaming experience.</div>
+        <div class="btn-group">
+          <a href="https://fabacademy.org/2025/labs/kochi/students/namita-aravind/presentation.png" target="_blank">Slides</a>
+          <a href="https://fabacademy.org/2025/labs/kochi/students/namita-aravind/presentation.mp4" target="_blank">Video</a>
+          <a href="https://fabacademy.org/2025/labs/kochi/students/namita-aravind/" target="_blank">FabAcademy Page</a>
+        </div>
+      </div>
+
+      <!-- Lumi -->
+      <div class="project-card fade-in">
+        <img src="https://fabacademy.org/2025/labs/kochi/students/noel-saji/presentation.png" alt="Lumi slide">
+        <div class="project-title">Lumi</div>
+        <div class="project-author">Author: Noel Saji</div>
+        <div class="project-description">Lumi is a character-style walking robot inspired by Toy Story. Equipped with a small TV, it reacts to people around it — playing animations when someone is nearby and walking around when no one is present.</div>
+        <div class="btn-group">
+          <a href="https://fabacademy.org/2025/labs/kochi/students/noel-saji/presentation.png" target="_blank">Slides</a>
+          <a href="https://fabacademy.org/2025/labs/kochi/students/noel-saji/presentation.mp4" target="_blank">Video</a>
+          <a href="https://fabacademy.org/2025/labs/kochi/students/noel-saji/" target="_blank">FabAcademy Page</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="lightboxOverlay"><img src="" alt="Expanded Image"></div>
+
+    <footer id="siteFooter">© 2025 Super Fab Lab Kerala — FabAcademy Showcase</footer>
+    <div id="backToTop">▲ Top</div>
+  </div>
+
+  <script>
+    const langData = {
+      en: {
+        title: "Super Fab Lab Kerala",
+        subtitle: "FabAcademy Project Showcase – Shenzhen Maker Faire",
+        slides: "Slides",
+        video: "Video",
+        page: "FabAcademy Page",
+        footer: "© 2025 Super Fab Lab Kerala — FabAcademy Showcase",
+        projects: [
+          { title: "GLOWSENSE", author: "Ancy Roshan", desc: "GLOWSENSE is an interactive flower-lamp that reacts to human presence. It “blooms” when someone approaches and glows in different colours. The mechanism combines proximity sensing, mechanical actuation, and custom lighting design." },
+          { title: "MINUTES", author: "Abin Mathew", desc: "MINUTES is a Pomodoro productivity timer designed to help users stay focused. Built with custom electronics and fabrication, it visually guides work–break cycles to improve daily efficiency." },
+          { title: "CHIP-E", author: "Revisankar S", desc: "CHIP-E is a friendly educational robot designed for kids. It helps young learners explore robotics through movement, interactive behaviours, and playful engagement." },
+          { title: "MogAPad", author: "Namita Aravind", desc: "MogAPad is a multi-game electronic pad capable of running Tic-Tac-Toe, Minesweeper, and more. It blends playful design with embedded systems to create an engaging handheld gaming experience." },
+          { title: "Lumi", author: "Noel Saji", desc: "Lumi is a character-style walking robot inspired by Toy Story. Equipped with a small TV, it reacts to people around it — playing animations when someone is nearby and walking around when no one is present." }
+        ]
+      },
+      zh: {
+        title: "超级创客实验室 喀拉拉邦",
+        subtitle: "FabAcademy 项目展示 – 深圳制汇节",
+        slides: "幻灯片",
+        video: "视频",
+        page: "FabAcademy 页面",
+        footer: "© 2025 超级创客实验室喀拉拉邦 — FabAcademy 展示",
+        projects: [
+          { title: "GLOWSENSE", author: "Ancy Roshan", desc: "GLOWSENSE 是一款会“绽放”的互动花灯。当有人靠近时，它会打开花瓣并呈现不同颜色的光效，结合了感应技术、机械结构与灯光设计。" },
+          { title: "MINUTES", author: "Abin Mathew", desc: "MINUTES 是一款用于提升专注效率的番茄钟计时器。它通过可视化的工作—休息周期，引导用户更高效地管理时间。" },
+          { title: "CHIP-E", author: "Revisankar S", desc: "CHIP-E 是一款面向儿童的友好型教育机器人，通过动作与互动行为让孩子们以更有趣的方式学习机器人技术。" },
+          { title: "MogAPad", author: "Namita Aravind", desc: "MogAPad 是一款多游戏电子手柄，可运行三子棋、扫雷等多种小游戏，将趣味设计与嵌入式系统巧妙结合。" },
+          { title: "Lumi", author: "Noel Saji", desc: "Lumi 是一款受《玩具总动员》启发的会走动角色机器人，配有迷你屏幕。有人靠近时会播放动画，无人时会在周围自由走动。" }
+        ]
+      }
+    };
+
+    const switcher = document.getElementById('langToggle');
+    const siteTitle = document.getElementById('siteTitle');
+    const siteSubtitle = document.getElementById('siteSubtitle');
+    const siteFooter = document.getElementById('siteFooter');
+
+    function applyLanguage(lang){
+      const t = langData[lang];
+      siteTitle.textContent = t.title;
+      siteSubtitle.textContent = t.subtitle;
+      siteFooter.textContent = t.footer;
+
+      const titles = document.querySelectorAll('.project-title');
+      const authors = document.querySelectorAll('.project-author');
+      const descs = document.querySelectorAll('.project-description');
+
+      titles.forEach((el,i)=> el.textContent = t.projects[i].title);
+      authors.forEach((el,i)=> el.textContent = 'Author: ' + t.projects[i].author);
+      descs.forEach((el,i)=> el.textContent = t.projects[i].desc);
+
+      // update buttons text
+      const btns = document.querySelectorAll('.btn-group a');
+      for(let i=0;i<btns.length;i+=3){ btns[i].textContent = t.slides; btns[i+1].textContent = t.video; btns[i+2].textContent = t.page; }
+    }
+
+    switcher.addEventListener('change', ()=>{
+      applyLanguage(switcher.checked ? 'zh' : 'en');
+    });
+    applyLanguage('en');
+
+    /* Fade-in script */
+    const observer = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); }); },{threshold:0.2});
+    document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+
+    /* Back to top */
+    const topBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', ()=>{ topBtn.style.display = window.scrollY > 300 ? 'block' : 'none'; });
+    topBtn.onclick = ()=>window.scrollTo({top:0, behavior:'smooth'});
+
+    /* Lightbox script */
+    const overlay = document.getElementById('lightboxOverlay');
+    const overlayImg = overlay.querySelector('img');
+
+    document.querySelectorAll('.project-card img').forEach(img => {
+      img.addEventListener('click', () => { overlayImg.src = img.src; overlay.style.display = 'flex'; });
+    });
+
+    overlay.addEventListener('click', () => { overlay.style.display = 'none'; });
+  </script>
+</body>
+</html>
