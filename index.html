@@ -66,13 +66,14 @@
     .project-card:hover { transform: translateY(-3px); }
 
     .project-title { font-size: 1.2rem; margin-bottom: 8px; font-weight: bold; color: #111; }
-    .project-author { font-size: 0.9rem; color: #666; margin-bottom: 8px; }
+    .project-author { font-size: 0.8rem; white-space:nowrap; color: #666; margin-bottom: 8px; }
 
     .project-description { font-size: 0.95rem; margin-bottom: 12px; color: #444; line-height: 1.4; }
 
     .project-card img { width: 100%; border-radius: 12px; margin-bottom: 12px; cursor: pointer; }
 
-    .btn-group a { display: inline-block; padding: 10px 14px; margin-right: 8px; text-decoration: none; background: #007aff; color: #fff; border-radius: 8px; font-size: 0.9rem; }
+    .btn-group { display:flex; flex-direction:row; flex-wrap:nowrap; gap:6px; }
+    .btn-group a { display:block; flex:1; text-align:center; padding: 8px 10px; margin-right: 8px; text-decoration: none; background: #007aff; color: #fff; border-radius: 8px; font-size: 0.9rem; }
     .btn-group a:hover { background: #005bbb; }
 
     footer { text-align: center; margin-top: 40px; padding-bottom: 20px; font-size: 0.9rem; color: #888; }
